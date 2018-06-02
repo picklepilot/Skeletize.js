@@ -1,0 +1,14 @@
+{
+  "name": "Skeletize.js",
+  "main": "skeletize.js",
+  "authors": [
+    "Justin Kaczmar <kaczmar.justin@gmail.com>"
+  ],
+  "description": "A very simple helper for building and applying Skeleton Screens over child elements of a node for ajax loading purposes.",
+  "keywords": [
+    "Javascript",
+    "plugin"
+  ],
+  "license": "MIT",
+  "homepage": "http://jkaczmar.com"
+}

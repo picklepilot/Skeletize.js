@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Skeletize Examples</title>
+
+	<style type="text/css">
+		div.container {
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ededed;
+			margin-top: 30px;
+			padding: 0 20px;
+		}
+
+		/** Skeletize styles */
+		.skeletize-container {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			z-index: 2;
+			width: 100%;
+			height: 100%;
+		}
+
+		.skeletize-part {
+			background: #f0f0f0;
+			position: absolute;
+			z-index: 3;
+		}
+
+		.skeletize-part:after {
+			content: '';
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			animation: slide 1s infinite;
+	 
+			/* 
+			CSS Gradient - complete browser support from http://www.colorzilla.com/gradient-editor/ 
+			*/
+			background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(128,186,232,0) 99%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(50%,rgba(255,255,255,0.8)), color-stop(99%,rgba(128,186,232,0)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* IE10+ */
+			background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+		}
+
+		.skeletize-header {
+			height: 60px;
+			background: #ededed;
+			position: relative;
+		}
+
+		.skeletize-header:after {
+			content: '';
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			animation: slide 1s infinite;
+	 
+			  /* 
+			  CSS Gradient - complete browser support from http://www.colorzilla.com/gradient-editor/ 
+			  */
+			  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(128,186,232,0) 99%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(50%,rgba(255,255,255,0.8)), color-stop(99%,rgba(128,186,232,0)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* IE10+ */
+				background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+		}
+
+		.skeletize-body {
+			display: flex;
+			flex: 1;
+			align-items: stretch;
+			background-color: red;
+		}
+
+		@keyframes slide {
+	0% {transform:translateX(-100%);}
+	100% {transform:translateX(100%);}
+}
+	</style>
+
+</head>
+
+<body id="home">
+
+	<h1>Testing Skeletize</h1>
+
+	<button 
+		onclick="
+			event.preventDefault();
+			skeletize.create('skeletize-target');
+		">Skeletize Me!</button>
+
+	<div class="container" id="skeletize-target" data-skeletize-description="header left with a body and footer and header right" style="position:relative;">
+		<h3>Header</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, leo sit amet hendrerit aliquet, ante tortor vestibulum libero, in volutpat nulla lacus at eros. Praesent laoreet justo in turpis hendrerit, eget gravida metus consectetur. Nulla porttitor libero risus, aliquet condimentum quam semper fringilla. Ut commodo sagittis urna, elementum finibus dolor pulvinar et. In dapibus et velit eu facilisis. Duis quam nulla, sodales vel porta sit amet, condimentum et magna.</p>
+	</div>
+
+	<script src="skeletize.js"></script>
+	<script>
+
+		let skeletize = new Skeletize();
+
+	</script>
+
+</body>
+</html>
