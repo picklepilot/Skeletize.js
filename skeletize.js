@@ -8,7 +8,7 @@
  * children of the specified container. The only requirements out of the box is 
  * that the element passed to the plugin have a `position:relative` set.
  *
- * @author Justin Kaczmar <jkaczmar.cw@mmm.com>
+ * @author Justin Kaczmar <kaczmar.justin@gmail.com>
  */
 
 var Skeletize = function () 
