@@ -12,6 +12,7 @@
 	background: #f0f0f0;
 	position: absolute;
 	z-index: 3;
+	overflow: hidden;
 }
 
 .skeletize-part:after {

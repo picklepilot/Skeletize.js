@@ -14,8 +14,10 @@
 var Skeletize = function () 
 {
 
-	//this.el = document.getElementById(elem);
-	console.log(this);
+	/**
+	 * @param { boolean } on_parent Specify whether to build the skeleton over the target element or its children.
+	 */
+	this.on_parent = false;
 
 }
 
@@ -31,33 +33,92 @@ Skeletize.prototype.defaults = {};
 Skeletize.prototype.create = function (elem)
 {
 
-	let el,
-		template,
-		childs;
+	let el;
 
 	el = document.getElementById(elem);
 
-	Array.from(el.children).forEach((element) => {
+	if (this.on_parent) {
 
-		let new_skeleton_part = document.createElement('DIV');
-		new_skeleton_part.classList.add('skeletize-part');
-		new_skeleton_part.style.width = element.clientWidth + 'px';
-		new_skeleton_part.style.height = element.offsetHeight + 'px';
-		new_skeleton_part.style.top = element.offsetTop + 'px';
-		new_skeleton_part.style.left = element.offsetLeft + 'px';
+		this.buildOnParent(el);
 
-		el.appendChild(new_skeleton_part);
+	} else {
 
-	});
+		Array.from(el.children).forEach((element) => {
+
+			this.buildOnParent(element);
+
+		});
+
+	}
 
 }
 
 
 
-Skeletize.prototype.destroy = function ()
+Skeletize.prototype.buildOnParent = function (el)
 {
 
+	let new_skeleton_part = this.createSkeletonPart(el);
+	el.appendChild(new_skeleton_part);
 
+}
+
+
+
+Skeletize.prototype.createSkeletonPart = function (element)
+{
+	
+	// Create the element and give it out custom class.
+	let new_skeleton_part = document.createElement('DIV');
+	new_skeleton_part.classList.add('skeletize-part');
+
+	// By default always set the width and height of the skeleton container.
+	new_skeleton_part.style.width = element.offsetWidth + 'px';
+	new_skeleton_part.style.height = element.offsetHeight + 'px';
+
+	if (this.on_parent) 
+	{
+
+		new_skeleton_part.style.top = '0px';
+		new_skeleton_part.style.left = '0px';
+
+	} 
+	else 
+	{
+
+		new_skeleton_part.style.top = element.offsetTop + 'px';
+		new_skeleton_part.style.left = element.offsetLeft + 'px';
+
+	}
+
+	return new_skeleton_part;
+
+}
+
+
+
+Skeletize.prototype.onParent = function (on_parent = false) 
+{
+
+	this.on_parent = on_parent;
+	return this;
+
+}
+
+
+
+Skeletize.prototype.destroy = function (elem)
+{
+
+	let el;
+
+	el = document.getElementById(elem);
+
+	Array.from(el.querySelectorAll('.skeletize-part')).forEach((element) => {
+
+		element.remove();
+
+	});
 
 }
 
