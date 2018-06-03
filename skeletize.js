@@ -121,7 +121,13 @@ Skeletize.prototype.setTarget = function (element)
 Skeletize.prototype.clear = function ()
 {
 
-	this.target.classList.remove('skeletize-on-load');
+	this.target.forEach((element) => {
+
+		element.classList.remove('skeletize-on-load');
+
+	});
+
+	
 	return this;
 
 }
@@ -138,16 +144,16 @@ Skeletize.prototype.getLength = function ()
 
 
 
-Skeletize.prototype.destroy = function (elem)
+Skeletize.prototype.destroy = function ()
 {
 
-	let el;
+	this.target.forEach((element) => {
 
-	el = document.getElementById(elem);
+		Array.from(element.querySelectorAll('.skeletize-part')).forEach((el) => {
 
-	Array.from(el.querySelectorAll('.skeletize-part')).forEach((element) => {
+			el.remove();
 
-		element.remove();
+		});
 
 	});
 

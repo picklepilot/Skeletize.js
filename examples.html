@@ -33,7 +33,7 @@
 	<button 
 		onclick="
 			event.preventDefault();
-			skeletize.setElement('skeletize-target').clear().onParent(false);
+			skeletize.setTarget('#skeletize-target').clear().onParent(false);
 			document.getElementById('destroy-btn').disabled = false;
 		">Skeletize Me!</button>
 
@@ -41,7 +41,7 @@
 		id="destroy-btn"
 		onclick="
 			event.preventDefault();
-			skeletize.destroy('skeletize-target');
+			skeletize.destroy('#skeletize-target');
 		" disabled="true">Destroy Me!</button>
 
 	<div 
@@ -56,6 +56,13 @@
 	</div>
 
 	<hr>
+
+	<button 
+		id="destroy-2-btn"
+		onclick="
+			event.preventDefault();
+			skeletize.setTarget('.multi-skeleton-test').destroy();
+		">Destroy Me!</button>
 
 	<div
 		class="container"
