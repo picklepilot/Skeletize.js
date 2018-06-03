@@ -15,6 +15,9 @@
 	overflow: hidden;
 }
 
+.skeletize-on-load {
+	overflow: hidden;
+}
 
 .skeletize-part:after,
 .skeletize-on-load:after {
