@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Skeletize Examples</title>
 
-	<link rel="stylesheet" href="skeletize.min.css">
+	<link rel="stylesheet" href="skeletize.css">
 
 	<style type="text/css">
 		div.container {
@@ -26,7 +26,7 @@
 	<button 
 		onclick="
 			event.preventDefault();
-			skeletize.onParent(false).create('skeletize-target');
+			skeletize.setElement('skeletize-target').clear().onParent(false);
 			document.getElementById('destroy-btn').disabled = false;
 		">Skeletize Me!</button>
 
@@ -38,7 +38,7 @@
 		" disabled="true">Destroy Me!</button>
 
 	<div 
-		class="container" 
+		class="container skeletize-on-load" 
 		id="skeletize-target" 
 		data-skeletize-description="header left with a body and footer and header right" 
 		style="position:relative;">

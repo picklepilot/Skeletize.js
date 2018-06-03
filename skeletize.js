@@ -15,9 +15,14 @@ var Skeletize = function ()
 {
 
 	/**
-	 * @param { boolean } on_parent Specify whether to build the skeleton over the target element or its children.
+	 * @param { boolean } on_parent  Specify whether to build the skeleton over the target element or its children.
 	 */
 	this.on_parent = false;
+
+	/**
+	 * @param { HTMLElement } element  The element on which each operation will be done.
+	 */
+	this.element = null;
 
 }
 
@@ -27,23 +32,18 @@ Skeletize.prototype.defaults = {};
 /**
  * Initialize and place the skeleton screen over the speicified element.
  * 
- * @param  {string} elem The ID string (without "#") to target.
  * @return {[type]}      [description]
  */
-Skeletize.prototype.create = function (elem)
+Skeletize.prototype.create = function ()
 {
-
-	let el;
-
-	el = document.getElementById(elem);
 
 	if (this.on_parent) {
 
-		this.buildOnParent(el);
+		this.buildOnParent(this.element);
 
 	} else {
 
-		Array.from(el.children).forEach((element) => {
+		Array.from(this.element.children).forEach((element) => {
 
 			this.buildOnParent(element);
 
@@ -101,6 +101,24 @@ Skeletize.prototype.onParent = function (on_parent = false)
 {
 
 	this.on_parent = on_parent;
+	return this;
+
+}
+
+Skeletize.prototype.setElement = function (element) 
+{
+
+	this.element = document.getElementById(element);
+	return this;
+
+}
+
+
+
+Skeletize.prototype.clear = function ()
+{
+
+	this.element.classList.remove('skeletize-on-load');
 	return this;
 
 }
