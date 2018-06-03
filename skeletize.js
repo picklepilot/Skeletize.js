@@ -20,9 +20,9 @@ var Skeletize = function ()
 	this.on_parent = false;
 
 	/**
-	 * @param { HTMLElement } element  The element on which each operation will be done.
+	 * @param { HTMLElement } target  The element(s) on which each operation will be done.
 	 */
-	this.element = null;
+	this.target = null;
 
 }
 
@@ -36,20 +36,12 @@ Skeletize.prototype.defaults = {};
  */
 Skeletize.prototype.create = function ()
 {
+	
+	this.target.forEach((element) => {
 
-	if (this.on_parent) {
+		this.buildOnParent(element);
 
-		this.buildOnParent(this.element);
-
-	} else {
-
-		Array.from(this.element.children).forEach((element) => {
-
-			this.buildOnParent(element);
-
-		});
-
-	}
+	});
 
 }
 
@@ -105,10 +97,21 @@ Skeletize.prototype.onParent = function (on_parent = false)
 
 }
 
-Skeletize.prototype.setElement = function (element) 
+Skeletize.prototype.setTarget = function (element) 
 {
 
-	this.element = document.getElementById(element);
+	if (element[0] == '#')
+		this.target = [document.getElementById(element.substr(1))];
+	else if (element[0] == '.')
+		this.target = Array.from(document.getElementsByClassName(element.substr(1)));
+	else if (
+		typeof HTMLElement === "object" ? element instanceof HTMLElement : //DOM2
+    	element && typeof element === "object" && element !== null && element.nodeType === 1 && typeof element.nodeName==="string"
+    )
+		this.target = [element];
+	else 
+		throw "A valid class or ID is required.";
+	
 	return this;
 
 }
@@ -118,8 +121,18 @@ Skeletize.prototype.setElement = function (element)
 Skeletize.prototype.clear = function ()
 {
 
-	this.element.classList.remove('skeletize-on-load');
+	this.target.classList.remove('skeletize-on-load');
 	return this;
+
+}
+
+
+
+
+Skeletize.prototype.getLength = function ()
+{
+
+	return this.target.length;
 
 }
 
