@@ -24,6 +24,11 @@ var Skeletize = function ()
 	 */
 	this.target = null;
 
+	/**
+	 * @param { string } text  The text (optional) to insert into the skeleton container as a message.
+	 */
+	this.text = '';
+
 }
 
 Skeletize.prototype.defaults = {};
@@ -38,6 +43,9 @@ Skeletize.prototype.create = function ()
 {
 	
 	this.target.forEach((element) => {
+
+		this.text = element.dataset.skeletizeText;
+		console.log(this.text);
 
 		this.buildOnParent(element);
 
@@ -63,6 +71,13 @@ Skeletize.prototype.createSkeletonPart = function (element)
 	// Create the element and give it out custom class.
 	let new_skeleton_part = document.createElement('DIV');
 	new_skeleton_part.classList.add('skeletize-part');
+
+	if (typeof this.text != "undefined") 
+	{
+
+		new_skeleton_part.innerHTML = this.text;
+
+	}
 
 	// By default always set the width and height of the skeleton container.
 	new_skeleton_part.style.width = element.offsetWidth + 'px';

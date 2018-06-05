@@ -13,6 +13,9 @@
 	position: absolute;
 	z-index: 3;
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .skeletize-on-load {
