@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="one-page-wonder.min.css">
 	<link rel="stylesheet" href="skeletize.css">
+	<link rel="stylesheet" href="prism.css">
 
 	<style type="text/css">
 
@@ -82,9 +83,69 @@
 	</header>
 
 	<section>
-		<div class="container">
-			<div class="row align-items-center">
-				<h1>Download</h1>
+		<div class="container pt-3 pb-3">
+			<div class="row pt-4 pb-4 align-items-center">
+				<div class="col">
+
+					<p class="lead mb-4 position-relative skeletize-on-load">This plugin is very simple&mdash;more of a helper. It will be extended incrementally, but for now just serves the purpose of initializing pages leveraging Ajax content to have skeleton screens. In addition, this plugin exposes a fluent API for easily building skeleton screens on the fly. Follow the steps below and enjoy!</p>
+
+					<hr class="mt-5 mb-4">
+
+					<h1 class="mb-5 position-relative skeletize-on-load skeletize-this-header">1. Download</h1>
+
+					<p class="position-relative skeletize-on-load">Simply install Skeletize.js via Bower:</p>
+
+					<div class="mb-5 position-relative skeletize-on-load">
+						<pre><code class="language-bash">bower install https://github.com/picklepilot/Skeletize.js.git</code></pre>
+					</div>
+
+
+
+
+					<h1 class="mt-3 mb-4 position-relative skeletize-on-load">2. Place into code</h1>
+
+					<p class="position-relative skeletize-on-load">Include the css file in your <code class="language-*">&lt;head&gt;</code> tag.</p>
+
+					<div class="mb-4 position-relative skeletize-on-load">
+						<pre><code class="language-*">&lt;link rel="stylesheet" href="/bower_components/skeletize.js/skeletize.min.css"&gt;</code></pre>
+					</div>
+
+					<p class="position-relative skeletize-on-load">Include the js file before the closing of your <code class="language-*">&lt;body&gt;</code> tag.</p>
+
+					<div class="mb-5 position-relative skeletize-on-load">
+						<pre><code class="language-*">&lt;link rel="stylesheet" href="/bower_components/skeletize.js/skeletize.min.js"&gt;</code></pre>
+					</div>
+
+
+
+
+					<h1 class="mt-3 mb-4 position-relative skeletize-on-load">3. Initialize</h1>
+
+					<p class="position-relative skeletize-on-load">Since Skeletize.js is more of a helper to call on elements on demand, initialization is just to register the main caller.</p>
+
+					<div class="mb-5 position-relative skeletize-on-load">
+						<pre><code class="language-javascript">let skeletize = new Skeletize();</code></pre>
+					</div>
+
+
+
+
+					<h1 class="mt-3 mb-4 position-relative skeletize-on-load">4. Usage Examples</h1>
+
+					<p class="position-relative skeletize-on-load">Basic usage:</p>
+
+					<div class="mb-4 position-relative skeletize-on-load">
+						<pre><code class="language-javascript">skeletize.setTarget('.target-element').create();</code></pre>
+					</div>
+
+					<p class="position-relative skeletize-on-load">Add a message to the skeleton screen via <code class="language-*">data-skeletize-text</code> attribute:</p>
+
+					<div class="mb-4 position-relative skeletize-on-load">
+						<pre><code class="language-*">&lt;div class="target-element" data-skeletize-text="Loading new stuff..."&gt;&lt;/div&gt;</code></pre>
+					</div>
+
+				</div>
+				
 			</div>
 		</div>
 	</section>
@@ -155,6 +216,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="skeletize.js"></script>
+	<script src="prism.js"></script>
 
 	<script>
 

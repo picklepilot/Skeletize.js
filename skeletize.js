@@ -29,6 +29,16 @@ var Skeletize = function ()
 	 */
 	this.text = '';
 
+	/**
+	 * @param { string } type  The type of loading to create (skeleton or spinner).
+	 */
+	this.type = 'skeleton';
+
+	/**
+	 * @param { string } type  Show/hide the flashing gray background.
+	 */
+	 this.show_background = true;
+
 }
 
 Skeletize.prototype.defaults = {};
@@ -45,8 +55,6 @@ Skeletize.prototype.create = function ()
 	this.target.forEach((element) => {
 
 		this.text = element.dataset.skeletizeText;
-		console.log(this.text);
-
 		this.buildOnParent(element);
 
 	});
@@ -72,12 +80,15 @@ Skeletize.prototype.createSkeletonPart = function (element)
 	let new_skeleton_part = document.createElement('DIV');
 	new_skeleton_part.classList.add('skeletize-part');
 
-	if (typeof this.text != "undefined") 
-	{
+	if (this.type === 'spinner')
+		new_skeleton_part.classList.add('spinner');
 
+	if (this.show_background)
+		new_skeleton_part.classList.add('skeletize-bg');
+
+	if (typeof this.text != "undefined") 
 		new_skeleton_part.innerHTML = this.text;
 
-	}
 
 	// By default always set the width and height of the skeleton container.
 	new_skeleton_part.style.width = element.offsetWidth + 'px';
@@ -112,6 +123,25 @@ Skeletize.prototype.onParent = function (on_parent = false)
 
 }
 
+
+Skeletize.prototype.type = function (type = 'skeleton')
+{
+
+	this.type = type;
+	return this;
+
+}
+
+
+Skeletize.prototype.showBackground = function (show_background = true)
+{
+
+	this.show_background = show_background;
+	return this;
+
+} 
+
+
 Skeletize.prototype.setTarget = function (element) 
 {
 
@@ -125,7 +155,7 @@ Skeletize.prototype.setTarget = function (element)
     )
 		this.target = [element];
 	else 
-		throw "A valid class or ID is required.";
+		throw "SKELETIZE.JS ERROR: A valid class or ID is required.";
 	
 	return this;
 
