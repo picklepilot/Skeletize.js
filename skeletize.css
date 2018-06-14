@@ -9,13 +9,18 @@
 }
 
 .skeletize-part {
-	background: #f0f0f0;
+	background: transparent;
 	position: absolute;
 	z-index: 3;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.skeletize-part.skeletize-bg,
+.skeletize-on-load.skeletize-bg {
+	background: #f0f0f0;
 }
 
 .skeletize-on-load {
