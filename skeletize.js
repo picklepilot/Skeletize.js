@@ -39,6 +39,9 @@ var Skeletize = function ()
 	 */
 	 this.show_background = true;
 
+	 // Do the onLoad function.
+	 this.onLoad();
+
 }
 
 Skeletize.prototype.defaults = {};
@@ -240,4 +243,14 @@ Skeletize.prototype.parse = function (str)
 }
 
 
-
+/**
+ * Create skeletize instances on each element that is tagged with skeletize-on-load.
+ * 
+ * @return void
+ */
+Skeletize.prototype.onLoad = function () {
+	Array.from(document.getElementsByClassName('skeletize-on-load')).forEach((element) => {
+		this.text = element.dataset.skeletizeText;
+		this.buildOnParent(element);
+	});
+}
