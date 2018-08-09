@@ -197,17 +197,13 @@ Skeletize.prototype.destroy = function ()
 
 	this.target.forEach((element) => {
 
-		if (element.classList.contains('skeletize-on-load'))
+		if (element.classList.contains('skeletize-on-load')) {
 			element.classList.remove('skeletize-on-load', 'skeletize-bg');
-		else 
-		{
-
-			Array.from(element.querySelectorAll('.skeletize-part')).forEach((el) => {
-				el.remove();
-			});
-
 		}
 		
+		Array.from(element.querySelectorAll('.skeletize-part')).forEach((el) => {
+			el.remove();
+		});
 
 	});
 
