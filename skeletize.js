@@ -94,11 +94,11 @@ Skeletize.prototype.createSkeletonPart = function (element)
 
 
 	// By default always set the width and height of the skeleton container.
-	//new_skeleton_part.style.width = element.offsetWidth + 'px';
-	//new_skeleton_part.style.height = element.offsetHeight + 'px';
+	new_skeleton_part.style.width = element.offsetWidth + 'px';
+	new_skeleton_part.style.height = element.offsetHeight + 'px';
 
-	new_skeleton_part.style.width = '100%';
-    new_skeleton_part.style.height = '100%';
+	//new_skeleton_part.style.width = '100%';
+    //new_skeleton_part.style.height = '100%';
 
 	if (this.on_parent) 
 	{
