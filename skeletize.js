@@ -94,8 +94,11 @@ Skeletize.prototype.createSkeletonPart = function (element)
 
 
 	// By default always set the width and height of the skeleton container.
-	new_skeleton_part.style.width = element.offsetWidth + 'px';
-	new_skeleton_part.style.height = element.offsetHeight + 'px';
+	//new_skeleton_part.style.width = element.offsetWidth + 'px';
+	//new_skeleton_part.style.height = element.offsetHeight + 'px';
+
+	new_skeleton_part.style.width = '100%';
+    new_skeleton_part.style.height = '100%';
 
 	if (this.on_parent) 
 	{
@@ -197,6 +200,7 @@ Skeletize.prototype.destroy = function ()
 
 	this.target.forEach((element) => {
 
+		// This will also help with legacy stuff that already exists elsewhere.
 		if (element.classList.contains('skeletize-on-load')) {
 			element.classList.remove('skeletize-on-load', 'skeletize-bg');
 		}
