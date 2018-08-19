@@ -95,16 +95,13 @@ Skeletize.prototype.createSkeletonPart = function (element, on_load = false)
 
 	// By default always set the width and height of the skeleton container.
 	new_skeleton_part.style.width = element.offsetWidth + 'px';
-	new_skeleton_part.style.height = element.offsetHeight + 'px';
-
-	//new_skeleton_part.style.width = '100%';
-    //new_skeleton_part.style.height = '100%';
-
+	
 	if (this.on_parent || on_load) 
 	{
 
 		new_skeleton_part.style.top = '0px';
 		new_skeleton_part.style.left = '0px';
+		new_skeleton_part.style.height = '100%';
 
 	} 
 	else 
@@ -112,6 +109,7 @@ Skeletize.prototype.createSkeletonPart = function (element, on_load = false)
 
 		new_skeleton_part.style.top = element.offsetTop + 'px';
 		new_skeleton_part.style.left = element.offsetLeft + 'px';
+		new_skeleton_part.style.height = element.offsetHeight + 'px';
 
 	}
 
