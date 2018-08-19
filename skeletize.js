@@ -66,17 +66,17 @@ Skeletize.prototype.create = function ()
 
 
 
-Skeletize.prototype.buildOnParent = function (el)
+Skeletize.prototype.buildOnParent = function (el, on_load = false)
 {
 
-	let new_skeleton_part = this.createSkeletonPart(el);
+	let new_skeleton_part = this.createSkeletonPart(el, on_load);
 	el.appendChild(new_skeleton_part);
 
 }
 
 
 
-Skeletize.prototype.createSkeletonPart = function (element)
+Skeletize.prototype.createSkeletonPart = function (element, on_load = false)
 {
 	
 	// Create the element and give it out custom class.
@@ -100,7 +100,7 @@ Skeletize.prototype.createSkeletonPart = function (element)
 	//new_skeleton_part.style.width = '100%';
     //new_skeleton_part.style.height = '100%';
 
-	if (this.on_parent) 
+	if (this.on_parent || on_load) 
 	{
 
 		new_skeleton_part.style.top = '0px';
@@ -250,9 +250,7 @@ Skeletize.prototype.parse = function (str)
  */
 Skeletize.prototype.onLoad = function () {
 	Array.from(document.getElementsByClassName('skeletize-on-load')).forEach((element) => {
-		this.onParent = true;
 		this.text = element.dataset.skeletizeText;
-		this.buildOnParent(element);
-		this.onParent = false;
+		this.buildOnParent(element, true);
 	});
 }
