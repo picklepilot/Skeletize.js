@@ -250,7 +250,9 @@ Skeletize.prototype.parse = function (str)
  */
 Skeletize.prototype.onLoad = function () {
 	Array.from(document.getElementsByClassName('skeletize-on-load')).forEach((element) => {
+		this.onParent = true;
 		this.text = element.dataset.skeletizeText;
 		this.buildOnParent(element);
+		this.onParent = false;
 	});
 }
