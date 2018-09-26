@@ -35,6 +35,10 @@
 	background: transparent;
 }
 
+.skeletize-on-load {
+	overflow: hidden;
+}
+
 .skeletize-part.skeletize-bg:after,
 .skeletize-on-load:after {
 
