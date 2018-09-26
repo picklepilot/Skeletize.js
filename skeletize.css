@@ -35,10 +35,9 @@
 	background: transparent;
 }
 
-.skeletize-part.skeletize-bg:after,
-.skeletize-on-load:after {
+.skeletize-part.skeletize-bg:after {
 
-	content: attr(data-after);
+	content: '';
 	position: absolute;
 	z-index: 2;
 	top: 0;
