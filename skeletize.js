@@ -40,7 +40,7 @@ var Skeletize = function ()
 	 this.show_background = true;
 
 	 // Do the onLoad function.
-	 this.onLoad();
+	 //this.onLoad();
 
 }
 
