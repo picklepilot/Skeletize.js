@@ -245,7 +245,7 @@ Skeletize.prototype.parse = function (str)
  * Remove skeletize-on-load classes from whole document.
  * 
  * @return void
- */
+ 
 Skeletize.prototype.onLoad = function () {
 	$('.skeletize-on-load').removeClass('skeletize-on-load');
-}
+}*/
