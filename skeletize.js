@@ -86,7 +86,7 @@ Skeletize.prototype.createSkeletonPart = function (element, on_load = false)
 	if (this.type === 'spinner')
 		new_skeleton_part.classList.add('spinner');
 
-	if (this.show_background)
+	if (this.show_background && !on_load)
 		new_skeleton_part.classList.add('skeletize-bg');
 
 	if (typeof this.text != "undefined") 
@@ -249,6 +249,9 @@ Skeletize.prototype.parse = function (str)
 Skeletize.prototype.onLoad = function () {
 	Array.from(document.getElementsByClassName('skeletize-on-load')).forEach((element) => {
 		this.text = element.dataset.skeletizeText;
-		this.buildOnParent(element, true);
+		if (this.text && this.text != '') {
+			// TODO: Make vanilla.
+			$(element).attr('data-after', this.text);
+		}
 	});
 }
