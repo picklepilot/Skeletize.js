@@ -1,5 +1,5 @@
 {
-  "name": "skeletize",
+  "name": "skeletize.js",
   "version": "1.0.0",
   "description": "A lightweight, simply dumb, skeleton screen plugin to fit a very specific need.",
   "main": "examples.html",
